@@ -1,0 +1,122 @@
+.purchase-container {
+  grid-column: 2;
+  grid-row: 1/5;
+  margin-block-end: 2.5rem;
+  max-width: 420px;
+  height: fit-content;
+  position: sticky;
+  top: 12rem;
+  .purchase-wrapper {
+    border: 1px solid $border;
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+  .purchase-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    min-height: 48px;
+    margin-block-end: 1rem;
+    .price,
+    .txt {
+      color: $logo;
+      font-family: MacanBold;
+      white-space: nowrap;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 400;
+    }
+  }
+}
+
+.purchase-categories {
+  margin-block-end: 1.25rem;
+  ul {
+    margin: 0;
+    padding: 0;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+  }
+  li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    height: 1.6rem;
+    i {
+      color: $green;
+      font-weight: 900;
+      display: inline-block;
+    }
+    span {
+      color: $txt2;
+      font-size: 14px;
+      margin-inline-start: 0.5rem;
+    }
+  }
+}
+
+.purchase-btn {
+  width: 100%;
+  padding: 12px 24px;
+  background-color: $green;
+  border: 1px solid $green;
+  border-radius: 3px;
+  color: $white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.purchase-btn:hover {
+  background-color: $btn-hover;
+}
+
+.purchase-info {
+  display: flex;
+  margin-block-end: 0.625rem;
+  width: 100%;
+  .delivery-wrapper {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    color: $txt1;
+    span {
+      width: 16px;
+      height: 16px;
+      fill: $txt1;
+      background: none;
+      border: none;
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+    }
+    b {
+      margin-left: 8px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+  .revisions-wrapper {
+    margin-left: 16px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    color: $txt1;
+    span {
+      width: 16px;
+      height: 16px;
+      fill: $txt1;
+      background: none;
+      border: none;
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+    }
+    b {
+      margin-left: 8px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+}

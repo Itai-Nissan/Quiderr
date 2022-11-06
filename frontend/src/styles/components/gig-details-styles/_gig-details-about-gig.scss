@@ -1,0 +1,23 @@
+.gig-details-about-gig {
+  display: block;
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+  padding-inline-end: 2em;
+  line-height: 1.53em;
+  h3 {
+    padding-block-end: 1.5rem;
+    font-size: 1.3em;
+    line-height: 2.5em;
+    color: $logo;
+    font-family: MacanBold;
+    text-transform: capitalize;
+  }
+  p {
+    display: block;
+    height: fit-content;
+    white-space: pre-wrap;
+    font-family: Macan;
+    color: $txt1;
+    font-weight: 500;
+  }
+}

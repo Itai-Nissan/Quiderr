@@ -1,0 +1,23 @@
+
+
+.alert {
+    font-family: Macan;
+    background-color: lightgray;
+    position: absolute;
+    padding: 1.2em;
+    border-radius: 5%;
+    z-index: 300;
+    &.alert-success {
+        background-color: $success;
+        top: 140px;
+        right: 1.5em;
+    
+    }
+    &.alert-error {
+        background-color: $alert;
+        top: 15px;
+        right: 1.5em;
+    
+    }
+}
+

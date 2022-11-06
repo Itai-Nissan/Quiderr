@@ -1,0 +1,28 @@
+.trusted-by {
+    background-color: #FAFAFA;
+    display: grid;
+    grid-template-columns: minmax(24px,1fr) minmax(auto,1400px) minmax(24px,1fr);
+
+    div {
+        grid-column: 2;
+        height: 95px;
+        background-color: #FAFAFA;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-family: MacanBold;
+        color: #C2C2C2;
+
+        picture {
+            margin-left: 60px;
+        }
+    }
+    
+}
+
+@media (max-width: 900px){
+    .trusted-by {
+        display: none;
+    }
+}
