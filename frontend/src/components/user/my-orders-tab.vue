@@ -12,7 +12,8 @@
         <div class="order-issued-at">Order date: {{ order.createdAt }}</div>
         <div class="order-status">Status: {{ order.status }}</div>
       </div>
-      <div class="order-image"><img :src="order.gig.imgUrl[0]" alt="" /></div>
+      <div class="order-image"><img :src="order.gig.imgUrl[0]" alt="" />
+      </div>
     </div>
   </section>
 </template>
@@ -41,4 +42,6 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+
+</style>

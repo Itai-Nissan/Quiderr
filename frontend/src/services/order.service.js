@@ -8,6 +8,7 @@ export const orderService = {
     remove,
     getOrders,
     saveOrder,
+    updateOrder,
 }
 
 const allTags = [
@@ -24,11 +25,11 @@ async function query(filterBy) {
     const orders = await httpService.get(ENDPOINT, filterBy)
     const sortedAsc = orders.sort(
         (objA, objB) => Number(objA.createdAt) - Number(objB.createdAt),
-      );
-      const sortedDesc = orders.sort(
+    );
+    const sortedDesc = orders.sort(
         (objA, objB) => Number(objB.createdAt) - Number(objA.createdAt),
-      );
-      
+    );
+
     return orders
 }
 
@@ -43,6 +44,13 @@ async function getById(id) {
 async function remove(id) {
     return await httpService.delete(`${ENDPOINT}/${id}`)
 }
+
+function updateOrder(order, response) {
+    const savedOrder = { ...order }
+    savedOrder.status = response
+    return _save(savedOrder)
+}
+
 
 function saveOrder(order, user) {
     const savedOrder = {
@@ -87,3 +95,4 @@ var datetime = currentdate.getDay() + "/" + currentdate.getMonth()
 function isPrimaryTag(tag) {
     return allTags.slice(0, 3).includes(tag)
 }
+

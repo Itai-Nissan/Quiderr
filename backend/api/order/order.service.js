@@ -23,7 +23,6 @@ async function remove(orderId) {
 }
 
 async function add(order) {
-  // console.log('order on add', order);
   const collection = await dbService.getCollection('order')
 
   const { ops } = await collection.insertOne(order)

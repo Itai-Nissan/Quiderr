@@ -30,7 +30,7 @@
             </div>
             <h2>{{ user.username }}</h2>
             <div v-if="user.isSeller" class="profile-stars">
-              <el-rate v-model="getUserLevel" disabled show-score text-color="#ff9900" />
+              <!-- <el-rate v-model="getUserLevel" disabled show-score text-color="#ff9900" /> -->
             </div>
             <p v-if="user.isSeller">Level {{ user.level }} seller</p>
             <p>
@@ -127,6 +127,7 @@ export default {
     if (this.loggedInUser && !this.loggedInUser.isSeller) {
       this.activeTab = 'myOrders'
     }
+    // console.log(this.loggedInUser);
   },
   methods: {
     onSetUserDescription(value) {

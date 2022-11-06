@@ -1,11 +1,7 @@
 <template>
   <section class="my-orders">
-    <div
-      v-for="receivedOrder in receivedOrders"
-      :key="receivedOrder"
-      class="order-item"
-    >
-      <div class="order-main-info">
+    <div v-for="receivedOrder in receivedOrders" :key="receivedOrder" class="order-item">
+      <div v-if="receivedOrder" class="order-main-info">
         <div class="buyer-name-and-img">
           <img :src="receivedOrder.buyer.imgUrl" alt="" />
           <h3>{{ receivedOrder.buyer.fullname }}</h3>
@@ -18,8 +14,22 @@
         </div>
         <div class="order-status">Status: {{ receivedOrder.status }}</div>
       </div>
-      <div class="order-image">
+      <div v-if="receivedOrder" class="order-image">
         <img :src="receivedOrder.gig.imgUrl[0]" alt="" />
+        <el-dropdown>
+          <span class="el-dropdown-link">
+            <el-icon class="el-icon--right">
+              <more />
+            </el-icon>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+
+              <el-dropdown-item v-on:click="onSetOrderStatus(receivedOrder, 'approved')">Aprrove</el-dropdown-item>
+              <el-dropdown-item v-on:click="onSetOrderStatus(receivedOrder, 'decline')">Decline</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </div>
     </div>
   </section>
@@ -37,6 +47,10 @@ export default {
     this.userReceivedOrders()
   },
   methods: {
+    async onSetOrderStatus(order, response) {
+      await this.$store.dispatch({ type: 'setOrderStatus', order: order, response: response })
+      this.userReceivedOrders()
+    },
     async userReceivedOrders() {
       const userId = this.$route.params.id
       this.receivedOrders = await this.$store.dispatch({
@@ -49,4 +63,6 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+
+</style>

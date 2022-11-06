@@ -30,6 +30,18 @@ export const orderStore = {
     },
   },
   actions: {
+    async setOrderStatus(state, { order, response }) {
+      let updatedOrder = order
+
+      if (response === 'approved') {
+        updatedOrder = orderService.updateOrder(order, response)
+      }
+      if (response === 'decline') {
+        updatedOrder = await orderService.remove(order._id)
+      }
+
+      return updatedOrder
+    },
     onSetFilterBy(state, filterBy) {
       state.commit({ type: 'setFilterBy', filterBy })
     },
