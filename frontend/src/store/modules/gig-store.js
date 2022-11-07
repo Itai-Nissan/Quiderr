@@ -56,7 +56,7 @@ export const gigStore = {
     // },
     async loadUserGigs(context, { userId }) {
       try {
-        const gigs = await gigService.query({ userId })
+        const gigs = await gigService.getUserGigs({ userId })
         context.commit({ type: 'setGigs', gigs: gigs })
         return gigs
       } catch (err) {

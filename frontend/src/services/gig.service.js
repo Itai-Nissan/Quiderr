@@ -5,8 +5,19 @@ import { httpService } from './http.service.js'
 const ENDPOINT = 'gig'
 
 async function query(filterBy) {
-    let gigs = await httpService.get(ENDPOINT, filterBy)
-    return gigs
+  let gigs = await httpService.get(ENDPOINT, filterBy)
+  return gigs
+}
+
+async function getUserGigs({ userId }) {
+  let gigs = await httpService.get(ENDPOINT)
+  const userGigs = []
+  gigs.find((gig) => {
+    if (gig.owner._id === userId) {
+      userGigs.push(gig)
+    }
+  })
+  return userGigs
 }
 
 async function getGigById(gigId) {
@@ -48,5 +59,5 @@ export const gigService = {
   getEmptyGig,
   removeGig,
   saveGig,
-  // addReview
+  getUserGigs,
 }

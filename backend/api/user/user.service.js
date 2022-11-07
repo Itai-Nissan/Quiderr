@@ -94,7 +94,13 @@ async function update(user) {
 }
 
 async function add(user) {
-  console.log('back user service:', user);
+  let dateObj = new Date();
+  let month = dateObj.getUTCMonth() + 1; //months from 1-12
+  let day = dateObj.getUTCDate();
+  let year = dateObj.getUTCFullYear();
+
+  let memberSince = year + "/" + month + "/" + day;
+
   try {
     // peek only updatable fields!
     const userToAdd = {
@@ -105,7 +111,8 @@ async function add(user) {
       isSeller: false,
       description: user.description,
       reviews: user.reviews,
-      memberSince: Date.now(),
+      // memberSince: Date.now(),
+      memberSince,
     }
     const collection = await dbService.getCollection('user')
     await collection.insertOne(userToAdd)

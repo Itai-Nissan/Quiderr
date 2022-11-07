@@ -32,7 +32,8 @@
             <div v-if="user.isSeller" class="profile-stars">
               <!-- <el-rate v-model="getUserLevel" disabled show-score text-color="#ff9900" /> -->
             </div>
-            <p v-if="user.isSeller">Level {{ user.level }} seller</p>
+            <p v-if="user.isSeller">Seller</p>
+            <!-- <p v-if="user.isSeller">Level {{ user.level }} seller</p> -->
             <p>
               <el-icon>
                 <Location />
@@ -77,7 +78,7 @@
           <div class="tab-btns">
             <button v-if="this.loggedInUser.isSeller" @click="openTab('gigsTab')"
               :class="{ selectedTab: activeTab === 'gigsTab' }">
-              Gigs
+              My Gigs
             </button>
             <button v-if="loggedInUser && user._id === loggedInUser._id" @click="openTab('myOrders')"
               :class="{ selectedTab: activeTab === 'myOrders' }">
@@ -127,7 +128,6 @@ export default {
     if (this.loggedInUser && !this.loggedInUser.isSeller) {
       this.activeTab = 'myOrders'
     }
-    // console.log(this.loggedInUser);
   },
   methods: {
     onSetUserDescription(value) {
@@ -153,7 +153,7 @@ export default {
   },
   computed: {
     memberSince() {
-      return new Date(this.user.memberSince * 1000).toLocaleTimeString();
+      return this.user.memberSince
     },
     userParamsId() {
       return this.$route.params.id
