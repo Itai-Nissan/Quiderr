@@ -129,6 +129,7 @@ export default {
         order: this.gig,
         user: this.user,
       })
+      socketService.onSetOrderStatus("delete-order", this.gig._id)
       showSuccessMsg('Order added')
       this.$router.push(`/user-profile/${this.user._id}`)
     },

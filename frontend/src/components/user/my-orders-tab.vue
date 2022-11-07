@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { socketService } from '../../services/socket.service'
+
 export default {
   name: 'myOrders',
   data() {
@@ -28,6 +30,9 @@ export default {
   },
   created() {
     this.userOrders()
+    socketService.on('updateUserOrders', (updateOrders) => {
+      this.userOrders()
+    })
   },
   methods: {
     async userOrders() {
@@ -36,6 +41,7 @@ export default {
         type: 'loadOrders',
         buyerId: userId,
       })
+
     },
   },
   components: {},

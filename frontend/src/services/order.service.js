@@ -25,11 +25,10 @@ async function query(filterBy) {
     const orders = await httpService.get(ENDPOINT, filterBy)
     const sortedAsc = orders.sort(
         (objA, objB) => Number(objA.createdAt) - Number(objB.createdAt),
-    );
+    )
     const sortedDesc = orders.sort(
         (objA, objB) => Number(objB.createdAt) - Number(objA.createdAt),
-    );
-
+    )
     return orders
 }
 

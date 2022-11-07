@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { socketService } from '../services/socket.service.js'
+// import { socketService } from '../services/socket.service.js'
 
   export default {
     name: 'login-page',
@@ -32,8 +32,9 @@ import { socketService } from '../services/socket.service.js'
     },
     methods: {
       async login() {
+        console.log('socket');
         await this.$store.dispatch({type: 'login', cred: this.cred});
-        socketService.emit("set-user-socket", this.$store.getters.getUser._id)
+        // socketService.login("set-user-socket", this.$store.getters.getUser._id)
         this.$router.push('/');
       },
     },

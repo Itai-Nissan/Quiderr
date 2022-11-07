@@ -19,34 +19,6 @@ function connectSockets(http, session) {
       console.log('Someone disconnected')
     })
 
-    socket.on('chat topic', (topic) => {
-      if (socket.myTopic === topic) return
-      if (socket.myTopic) {
-        socket.leave(socket.myTopic)
-      }
-      socket.join(topic)
-      socket.myTopic = topic
-    })
-
-    socket.on('chat newMsg', async (msg) => {
-      console.log('Emitting Chat msg', msg)
-      // emits to all sockets:
-      // gIo.emit('chat addMsg', msg)
-
-      // emits only to sockets in the same room
-      gIo.to(socket.myTopic).emit('chat addMsg', msg)
-
-      orderService.addMsg(socket.myTopic, msg)//save history bonus
-    })
-
-    socket.on('user-typing', (user) => {
-      console.log(`${user} is typing...`)
-      //   gIo.to(socket.myTopic).emit('user-typing', user)
-      broadcast({ type: 'user-typing', data: user, room: socket.myTopic, userId: socket.userId })
-    })
-
-
-
     socket.on('user-watch', (userId) => {
       socket.join('watching:' + userId)
     })
@@ -57,10 +29,11 @@ function connectSockets(http, session) {
     })
 
     //for fun delete order in other browsers
-    socket.on('deleteOrder', (orderId) => {
-      //   gIo.to(socket.myTopic).emit('user-typing', user)
-      broadcast({ type: 'delete-order', data: orderId, userId: socket.userId })
+    socket.on('update-orders', (orderId) => {
+      const updateOrders = orderService.getById(orderId)
+        socket.broadcast.emit('updateUserOrders', updateOrders)
     })
+
     socket.on('unset-user-socket', () => {
       delete socket.userId
     })
@@ -83,7 +56,7 @@ async function emitToUser({ type, data, userId }) {
 }
 
 // Send to all sockets BUT not the current socket
-async function broadcast({ type, data, room = null, userId }) {
+async function broadcast({ type, data, userId }) {
   console.log('BROADCASTING', JSON.stringify(arguments))
   const excludedSocket = await _getUserSocket(userId)
   if (!excludedSocket) {
@@ -92,11 +65,7 @@ async function broadcast({ type, data, room = null, userId }) {
     return
   }
   logger.debug('broadcast to all but user: ', userId)
-  if (room) {
-    excludedSocket.broadcast.to(room).emit(type, data)
-  } else {
-    excludedSocket.broadcast.emit(type, data)
-  }
+  excludedSocket.broadcast.emit(type, data)
 }
 
 async function _getUserSocket(userId) {

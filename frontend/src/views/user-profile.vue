@@ -142,7 +142,6 @@ export default {
     },
     getLoggedInUser() {
       this.loggedInUser = this.$store.getters.getUser
-      console.log(this.loggedInUser);
     },
     async userPage() {
       const userId = this.$route.params.id

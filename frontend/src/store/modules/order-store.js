@@ -30,16 +30,15 @@ export const orderStore = {
     },
   },
   actions: {
-    async setOrderStatus(state, { order, response }) {
+    setOrderStatus(state, { order, response }) {
       let updatedOrder = order
 
       if (response === 'approved') {
         updatedOrder = orderService.updateOrder(order, response)
       }
       if (response === 'decline') {
-        updatedOrder = await orderService.remove(order._id)
+        updatedOrder = orderService.remove(order._id)
       }
-
       return updatedOrder
     },
     onSetFilterBy(state, filterBy) {
@@ -65,6 +64,16 @@ export const orderStore = {
       try {
         const orders = await orderService.query({ buyerId, sellerId })
         context.commit({ type: 'setOrders', orders: orders })
+        return orders
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    async loadSocketOrders(buyerId) {
+      try {
+        const orders = await orderService.query(buyerId)
+        console.log(orders);
+        orderStore.mutations.setOrders(orders )
         return orders
       } catch (err) {
         console.log(err)

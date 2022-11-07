@@ -68,27 +68,8 @@ function isPrimaryTag(tag) {
   return allTags.slice(0, 3).includes(tag)
 }
 
-// const gigs = [{}, {}]
-// HomePage
-//  list of gigs with link to gig-details
-//  CSS Infra, Master CSS
-
-// Gig Details
-// <pre>JSON, slowly improve
-
-// UserDetails
-//  basic info
-//  orderedGigs => orderService.query({userId: 'u101'})
-//  ownedGigs => gigService.query({ownerId: 'u103'})
-
-// GigEdit - make it super easy to add Gig for development
-
-// GigList, GigOrder
-// Order, confirm Order
-// Lastly: GigExplore, Filtering
-
-function loadApp() {
-  socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
-    showSuccessMsg(`Another order was just made, check it out ${order.gig._id}`)
-  })
-}
+// function loadApp() {
+//   socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
+//     showSuccessMsg(`Another order was just made, check it out ${order.gig._id}`)
+//   })
+// }

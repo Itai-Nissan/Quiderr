@@ -30,7 +30,6 @@ export default {
     },
     methods: {
         openModal() {
-            console.log('its on');
             this.isOn = true
         },
         closeModal() {
@@ -38,7 +37,7 @@ export default {
         },
         async login() {
             await this.$store.dispatch({ type: 'login', cred: this.cred });
-            socketService.emit("set-user-socket", this.$store.getters.getUser._id)
+            // socketService.login("set-user-socket", this.$store.getters.getUser._id)
             this.$emit('closeModal')
 
             this.$router.push('/')
@@ -49,39 +48,3 @@ export default {
     },
 };
 </script>
-
-<style>
-</style>
-
-
-<!-- 
-<template>
-  <section v-if="isOn" class="join-container">
-    <div class="join-modal">
-
-    </div>
-    <div @click="closeModal()" class="outside"></div>
-  </section>
-</template>
-
-<script>
-export default {
-    data() {
-        return {
-            isOn: true,
-        }
-    },
-    methods: {
-        openModal(){
-            this.isOn = true
-        },
-        closeModal(){
-            this.isOn = false
-        }
-    },
-}
-</script>
-
-<style>
-
-</style> -->

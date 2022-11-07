@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import { socketService } from '../../services/socket.service'
+
 export default {
   name: 'receivedOrders',
   data() {
@@ -45,11 +47,17 @@ export default {
   },
   created() {
     this.userReceivedOrders()
+    socketService.on('updateUserOrders', (updateOrders) => {
+      console.log('userReceivedOrders');
+      this.userReceivedOrders()
+    })
+
   },
   methods: {
     async onSetOrderStatus(order, response) {
       await this.$store.dispatch({ type: 'setOrderStatus', order: order, response: response })
       this.userReceivedOrders()
+      socketService.onSetOrderStatus("update-order", order._id)
     },
     async userReceivedOrders() {
       const userId = this.$route.params.id
