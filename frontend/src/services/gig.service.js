@@ -14,9 +14,11 @@ async function getUserGigs({ userId }) {
   const userGigs = []
   gigs.find((gig) => {
     if (gig.owner._id === userId) {
+      console.log(gig);
       userGigs.push(gig)
     }
   })
+  console.log(userGigs);
   return userGigs
 }
 

@@ -8,10 +8,11 @@ async function query(filterBy) {
   const collection = await dbService.getCollection('gig')
   
   const gigs = await collection
-    .find(query)
-    .sort(order)
-    .toArray()
+  .find(query)
+  .sort(order)
+  .toArray()
 
+  // console.log('printing gigs:',gigs);
   return gigs
 }
 
