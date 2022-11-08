@@ -49,7 +49,7 @@
             <div :class="{ active: isDescription }">
               <header class="description-header">
                 <h4>Description</h4>
-                <div title="edit description" @click="onEditDescription" class="edit-btn">
+                <div v-if="loggedInUser && user._id === loggedInUser._id" title="edit description" @click="onEditDescription" class="edit-btn">
                   <el-icon class="">
                     <Edit />
                   </el-icon>

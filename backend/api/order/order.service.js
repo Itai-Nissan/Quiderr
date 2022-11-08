@@ -12,10 +12,7 @@ async function query(filterBy) {
 
 async function getById(orderId) {
   const collection = await dbService.getCollection('order')
-  const order = collection.findOne({ _id: orderId })
-  if (!order) {
-    order = await collection.findOne({ _id: ObjectId(orderId) })
-  }
+  const order = collection.findOne({ _id: ObjectId(orderId) })
   return order
 }
 
