@@ -37,6 +37,7 @@
 
 <script>
 import { socketService } from '../../services/socket.service'
+import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 
 export default {
   name: 'receivedOrders',
@@ -47,9 +48,8 @@ export default {
   },
   created() {
     this.userReceivedOrders()
-    socketService.on('updateUserOrders', (updateOrders) => {
-      console.log('userReceivedOrders');
-      this.userReceivedOrders()
+    socketService.on('updateUserOrders', (response) => {
+      this.userReceivedOrders(response)
     })
 
   },
@@ -57,9 +57,11 @@ export default {
     async onSetOrderStatus(order, response) {
       await this.$store.dispatch({ type: 'setOrderStatus', order: order, response: response })
       this.userReceivedOrders()
-      socketService.onSetOrderStatus("update-order", order._id)
+      socketService.onSetOrderStatus("update-order", response)
+      if(response === 'approved') showSuccessMsg('Order approved!')
+      if(response === 'decline') showSuccessMsg('Order declined')
     },
-    async userReceivedOrders() {
+    async userReceivedOrders(response) {
       const userId = this.$route.params.id
       this.receivedOrders = await this.$store.dispatch({
         type: 'loadOrders',

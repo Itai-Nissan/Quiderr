@@ -116,7 +116,6 @@ export default {
   methods: {
     getLoggedInUser() {
       this.loggedInUser = this.$store.getters.getUser
-      console.log(this.loggedInUser);
     },
     async onSetCreateOrder() {
       if (!this.loggedInUser) {

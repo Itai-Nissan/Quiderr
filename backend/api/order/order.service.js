@@ -60,7 +60,6 @@ async function addMsg(orderId, msg) {
 
 function _buildCriteria(filterBy) {
   const criteria = {}
-  console.log('filterBy', filterBy)
   if (filterBy.title) {
     const txtCriteria = { $regex: filterBy.title, $options: 'i' }
     criteria.title = txtCriteria

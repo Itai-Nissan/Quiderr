@@ -20,6 +20,8 @@
 
 <script>
 import { socketService } from '../../services/socket.service'
+import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
+
 
 export default {
   name: 'myOrders',
@@ -30,18 +32,19 @@ export default {
   },
   created() {
     this.userOrders()
-    socketService.on('updateUserOrders', (updateOrders) => {
-      this.userOrders()
+    socketService.on('updateUserOrders', (response) => {
+      this.userOrders(response)
     })
   },
   methods: {
-    async userOrders() {
+    async userOrders(response) {
       const userId = this.$route.params.id
       this.orders = await this.$store.dispatch({
         type: 'loadOrders',
         buyerId: userId,
       })
-
+      if(response === 'approved') showSuccessMsg('Order approved!')
+      if(response === 'decline') showErrorMsg('Order declined by user!')
     },
   },
   components: {},

@@ -29,9 +29,9 @@ function connectSockets(http, session) {
     })
 
     //for fun delete order in other browsers
-    socket.on('update-orders', (orderId) => {
-      const updateOrders = orderService.getById(orderId)
-        socket.broadcast.emit('updateUserOrders', updateOrders)
+    socket.on('update-orders', (response) => {
+      // const updateOrder = orderService.getById(orderId)
+      socket.broadcast.emit('updateUserOrders', response)
     })
 
     socket.on('unset-user-socket', () => {

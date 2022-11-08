@@ -50,7 +50,6 @@ function updateOrder(order, response) {
     return _save(savedOrder)
 }
 
-
 function saveOrder(order, user) {
     const savedOrder = {
         buyer: {

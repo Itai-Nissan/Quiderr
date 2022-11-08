@@ -36,9 +36,9 @@ function createSocketService() {
       const user = userService.getLoggedinUser()
       // if (user) this.login(user._id)
 
-      socket.on('updateUserOrders', (updateOrders) => {
+      socket.on('updateUserOrders', ((response) => {
         const userId = user._id
-      })
+      }))
     },
     on(eventName, cb) {
       socket.on(eventName, cb)
@@ -52,8 +52,8 @@ function createSocketService() {
       data = JSON.parse(JSON.stringify(data))
       socket.emit(eventName, data)
     },
-    onSetOrderStatus(orderId) {
-      socket.emit(SOCKET_EMIT_UPDATE_ORDERS, orderId)
+    onSetOrderStatus(type, response) {
+      socket.emit(SOCKET_EMIT_UPDATE_ORDERS, response)
     },
     // login(userId) {
     //   socket.emit(SOCKET_EMIT_LOGIN, userId)
@@ -81,7 +81,6 @@ function createDummySocketService() {
       this.setup()
     },
     login() {
-      console.log('here login');
     },
     logout() {
     },
