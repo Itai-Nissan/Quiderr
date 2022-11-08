@@ -6,7 +6,7 @@ module.exports = {
   getCollection,
 }
 
-const dbName = 'fiverr_db'
+const dbName = 'quiderr_db'
 
 var dbConn = null
 

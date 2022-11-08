@@ -17,7 +17,11 @@ async function query(filterBy) {
 
 async function getById(gigId) {
   const collection = await dbService.getCollection('gig')
-  const gig = collection.findOne({ _id: ObjectId(gigId) })
+  const gig = collection.findOne({ _id: gigId })
+  if (!gig) {
+    gig = await collection.findOne({ _id: ObjectId(gigId) })
+  }
+
   return gig
 }
 
