@@ -36,7 +36,6 @@ export default {
       const userId = this.$route.params.id
       this.gigs = await this.$store.dispatch({ type: 'loadUserGigs', userId })
       this.reviews = this.gigs.map((gig) => gig.owner.reviews)
-      console.log(this.reviews)
     },
   },
   created() {

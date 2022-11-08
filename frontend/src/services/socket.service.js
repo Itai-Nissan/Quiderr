@@ -41,7 +41,6 @@ function createSocketService() {
       })
     },
     on(eventName, cb) {
-      console.log('listen');
       socket.on(eventName, cb)
     },
     off(eventName, cb = null) {

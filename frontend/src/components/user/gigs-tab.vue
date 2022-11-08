@@ -20,7 +20,6 @@ export default {
         async userGigs() {
             const userId = this.$route.params.id
             this.gigs = await this.$store.dispatch({ type: 'loadUserGigs', userId })
-            console.log(this.gigs);
         },
     },
     components: {
