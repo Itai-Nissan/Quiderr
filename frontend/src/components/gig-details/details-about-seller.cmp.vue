@@ -1,8 +1,5 @@
 <template>
-  <section
-    v-if="gig"
-    class="details-about-seller"
-  >
+  <section v-if="gig" class="details-about-seller">
     <h3>About The Seller</h3>
     <div class="seller-info">
       <img :src="gig.owner.imgUrl">
@@ -13,12 +10,7 @@
         <h5 class="seller-level">
           Level {{ gig.owner.rate }} seller
         </h5>
-        <el-rate
-          v-model="ownerRate"
-          disabled
-          show-score
-          text-color="#ff9900"
-        />
+        <el-rate v-model="ownerRate" disabled show-score text-color="#ff9900" />
         <!-- <div class="stars">
           <span class="star">
             <svg
@@ -140,14 +132,19 @@ import { ref } from 'vue'
 
 export default {
   name: 'DetailsAboutGig',
-  props: { gig: Object },
+  props: {
+    gig: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       ownerRate: ref(Number.parseFloat(this.gig.owner.rate).toFixed(1)),
     }
   },
   computed: {},
-  created() {},
+  created() { },
   methods: {},
 }
 </script>

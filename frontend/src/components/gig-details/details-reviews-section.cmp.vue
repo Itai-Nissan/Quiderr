@@ -144,7 +144,12 @@
 import { ref } from 'vue'
 export default {
   name: 'DetailsAboutGig',
-  props: { gig: Object },
+  props: {
+    gig: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       seller: null,

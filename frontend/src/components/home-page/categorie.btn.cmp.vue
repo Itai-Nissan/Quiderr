@@ -8,9 +8,12 @@
 
 <script>
 export default {
-  name:'CategoryBtn',
+  name: 'CategoryBtn',
   props: {
-    categorie: String,
+    categorie: {
+      type: String,
+      required: true
+    }
   },
   computed: {
     stylisedName() {

@@ -1,8 +1,5 @@
 <template>
-  <section
-    v-if="gig"
-    class="details-header"
-  >
+  <section v-if="gig" class="details-header">
     <h1 class="gig-title">
       {{ gig.title }}
     </h1>
@@ -13,16 +10,8 @@
         {{ setUserLevel() }}
       </h4>
       <span class="separator">|</span>
-      <div
-        v-if="gig"
-        class="userStars"
-      >
-        <el-rate
-          v-model="getOwnerRate"
-          disabled
-          show-score
-          text-color="#ff9900"
-        />
+      <div v-if="gig" class="userStars">
+        <el-rate v-model="getOwnerRate" disabled show-score text-color="#ff9900" />
       </div>
       <span>(207)</span>
       <p>5 Orders in Queue</p>
@@ -33,7 +22,12 @@
 <script>
 export default {
   name: 'DetailsHeader',
-  props: { gig: Object },
+  props: {
+    gig: {
+      type: Object,
+      required: true
+    },
+  },
   data() {
     return {}
   },
@@ -42,7 +36,7 @@ export default {
       return Number.parseFloat(5).toFixed(1)
     },
   },
-  created() {},
+  created() { },
   methods: {
     setUserLevel() {
       const level = this.gig.owner.level

@@ -33,7 +33,6 @@
 </template>
 
 <script>
-// import { socketService } from '../services/socket.service.js'
 
 export default {
     name: 'LoginPage',
@@ -46,22 +45,21 @@ export default {
             isOn: false,
         }
     },
+    created(){
+    },
     mounted() {
-        // this.$refs.username.focus();
+
     },
     methods: {
         openModal() {
             this.isOn = true
         },
-        closeModal() {
-            this.isOn = false
-        },
+        // closeModal() {
+        //     this.isOn = false
+        // },
         async login() {
-            console.log('you are here login join');
             await this.$store.dispatch({ type: 'login', cred: this.cred })
-            // socketService.login("set-user-socket", this.$store.getters.getUser._id)
-            this.$emit('closeModal')
-
+            // this.$emit('closeModal')
             this.$router.push('/')
         },
     },

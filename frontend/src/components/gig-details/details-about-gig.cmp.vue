@@ -1,8 +1,5 @@
 <template>
-  <section
-    v-if="gig"
-    class="details-about-gig"
-  >
+  <section v-if="gig" class="details-about-gig">
     <h3>About This Gig</h3>
     <p>{{ gig.description }}</p>
   </section>
@@ -11,12 +8,17 @@
 <script>
 export default {
   name: 'DetailsAboutGig',
-  props: { gig: Object },
+  props: {
+    gig: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {}
   },
   computed: {},
-  created() {},
+  created() { },
   methods: {},
 }
 </script>

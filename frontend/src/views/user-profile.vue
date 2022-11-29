@@ -34,7 +34,8 @@
             <div :class="{ active: isDescription }">
               <header class="description-header">
                 <h4>Description</h4>
-                <div v-if="loggedInUser && user._id === loggedInUser._id" title="edit description" class="edit-btn"
+                <div
+v-if="loggedInUser && user._id === loggedInUser._id" title="edit description" class="edit-btn"
                   @click="onEditDescription">
                   <el-icon class="">
                     <Edit />
@@ -50,9 +51,11 @@
                 </div>
               </section>
               <section v-if="!isDescription" class="static">
-                <textarea v-if="user.description" ref="input" class="user-description-text"
+                <textarea
+v-if="user.description" ref="input" class="user-description-text"
                   @input="onSetUserDescription($event.target.value)">{{ user.description }}</textarea>
-                <textarea v-if="!user.description" ref="input" :value="value" class="user-description-text"
+                <textarea
+v-if="!user.description" ref="input" :value="value" class="user-description-text"
                   @input="onSetUserDescription($event.target.value)">You are welcome to write somthing about yourself</textarea>
               </section>
             </div>
@@ -60,22 +63,26 @@
         </div>
         <div class="display-tabs">
           <div class="tab-btns">
-            <button v-if="loggedInUser.isSeller" :class="{ selectedTab: activeTab === 'gigsTab' }"
+            <button
+v-if="loggedInUser.isSeller" :class="{ selectedTab: activeTab === 'gigsTab' }"
               @click="openTab('gigsTab')">
               My Gigs
             </button>
-            <button v-if="loggedInUser && user._id === loggedInUser._id"
+            <button
+v-if="loggedInUser && user._id === loggedInUser._id"
               :class="{ selectedTab: activeTab === 'myOrders' }" @click="openTab('myOrders')">
               My Orders
             </button>
-            <button v-if="
+            <button
+v-if="
               loggedInUser &&
               user._id === loggedInUser._id &&
               loggedInUser.isSeller
             " :class="{ selectedTab: activeTab === 'receivedOrders' }" @click="openTab('receivedOrders')">
               Received Orders
             </button>
-            <button v-if="loggedInUser.isSeller" :class="{ selectedTab: activeTab === 'reviewsTab' }"
+            <button
+v-if="loggedInUser.isSeller" :class="{ selectedTab: activeTab === 'reviewsTab' }"
               @click="openTab('reviewsTab')">
               Reviews
             </button>
