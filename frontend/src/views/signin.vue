@@ -32,7 +32,6 @@
 </template>
 
 <script>
-// import { socketService } from '../services/socket.service.js'
 
   export default {
     name: 'LoginPage',
@@ -50,10 +49,7 @@
     methods: {
       async login() {
         console.log('you are here login signin')
-        const loggedUser = await this.$store.dispatch({type: 'login', cred: this.cred});
-        // console.log('loggedUser',loggedUser)
-        // if(!loggedUser) return
-        // socketService.login("set-user-socket", this.$store.getters.getUser._id)
+        // const loggedUser = await this.$store.dispatch({type: 'login', cred: this.cred});
         this.$router.push('/');
       },
     },

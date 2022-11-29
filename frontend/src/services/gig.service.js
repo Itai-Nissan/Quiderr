@@ -29,12 +29,12 @@ async function removeGig(gigId) {
 }
 
 async function saveGig(gig) {
-  var gig = JSON.parse(JSON.stringify(gig))
-  if (gig._id) {
-    return await httpService.put(`${ENDPOINT}/${gig._id}`, gig)
+  const gigToSave = JSON.parse(JSON.stringify(gig))
+  if (gigToSave._id) {
+    return await httpService.put(`${ENDPOINT}/${gigToSave._id}`, gigToSave)
   } else {
-    if (!gig.name) gig.name = 'Unknown'
-    return await httpService.post(ENDPOINT, gig)
+    if (!gigToSave.name) gigToSave.name = 'Unknown'
+    return await httpService.post(ENDPOINT, gigToSave)
   }
 }
 

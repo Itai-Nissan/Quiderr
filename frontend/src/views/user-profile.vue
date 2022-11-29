@@ -5,36 +5,17 @@
         <div class="the-profile">
           <div class="user-info-stats">
             <div class="info-header">
-              <form
-                action=""
-                @submit.prevent="onSetUserImg()"
-              >
-                <label for="imgupload"> <input
-                                          id="imgupload"
-                                          type="file"
-                                          style="display:none"
-                                          @click="onSetUserImg()"
-                                        >
-                  <el-icon
-                    v-if="!user.imgUrl"
-                    color=""
-                    size="50px"
-                  >
+              <form action="" @submit.prevent="onSetUserImg()">
+                <label for="imgupload"> <input id="imgupload" type="file" style="display:none" @click="onSetUserImg()">
+                  <el-icon v-if="!user.imgUrl" color="" size="50px">
                     <User />
                   </el-icon>
-                  <img
-                    v-if="user.imgUrl"
-                    class="user-img"
-                    :src="user.imgUrl"
-                  >
+                  <img v-if="user.imgUrl" class="user-img" :src="user.imgUrl">
                 </label>
               </form>
             </div>
             <h2>{{ user.username }}</h2>
-            <div
-              v-if="user.isSeller"
-              class="profile-stars"
-            />
+            <div v-if="user.isSeller" class="profile-stars" />
             <p v-if="user.isSeller">
               Seller
             </p>
@@ -53,89 +34,49 @@
             <div :class="{ active: isDescription }">
               <header class="description-header">
                 <h4>Description</h4>
-                <div
-                  v-if="loggedInUser && user._id === loggedInUser._id"
-                  title="edit description"
-                  class="edit-btn"
-                  @click="onEditDescription"
-                >
+                <div v-if="loggedInUser && user._id === loggedInUser._id" title="edit description" class="edit-btn"
+                  @click="onEditDescription">
                   <el-icon class="">
                     <Edit />
                   </el-icon>
                 </div>
               </header>
-              <section
-                v-if="isDescription"
-                class="static"
-              >
-                <div
-                  v-if="user.description"
-                  class="user-description-text"
-                >
+              <section v-if="isDescription" class="static">
+                <div v-if="user.description" class="user-description-text">
                   {{ user.description }}
                 </div>
-                <div
-                  v-if="!user.description"
-                  class="user-description-text"
-                >
+                <div v-if="!user.description" class="user-description-text">
                   You are welcome to write somthing about yourself
                 </div>
               </section>
-              <section
-                v-if="!isDescription"
-                class="static"
-              >
-                <textarea
-                  v-if="user.description"
-                  ref="input"
-                  class="user-description-text"
-                  @input="onSetUserDescription($event.target.value)"
-                >{{ user.description }}</textarea>
-                <textarea
-                  v-if="!user.description"
-                  ref="input"
-                  :value="value"
-                  class="user-description-text"
-                  @input="onSetUserDescription($event.target.value)"
-                >
-                  You are welcome to write somthing about yourself
-                </textarea>
+              <section v-if="!isDescription" class="static">
+                <textarea v-if="user.description" ref="input" class="user-description-text"
+                  @input="onSetUserDescription($event.target.value)">{{ user.description }}</textarea>
+                <textarea v-if="!user.description" ref="input" :value="value" class="user-description-text"
+                  @input="onSetUserDescription($event.target.value)">You are welcome to write somthing about yourself</textarea>
               </section>
             </div>
           </section>
         </div>
         <div class="display-tabs">
           <div class="tab-btns">
-            <button
-              v-if="loggedInUser.isSeller"
-              :class="{ selectedTab: activeTab === 'gigsTab' }"
-              @click="openTab('gigsTab')"
-            >
+            <button v-if="loggedInUser.isSeller" :class="{ selectedTab: activeTab === 'gigsTab' }"
+              @click="openTab('gigsTab')">
               My Gigs
             </button>
-            <button
-              v-if="loggedInUser && user._id === loggedInUser._id"
-              :class="{ selectedTab: activeTab === 'myOrders' }"
-              @click="openTab('myOrders')"
-            >
+            <button v-if="loggedInUser && user._id === loggedInUser._id"
+              :class="{ selectedTab: activeTab === 'myOrders' }" @click="openTab('myOrders')">
               My Orders
             </button>
-            <button
-              v-if="
-                loggedInUser &&
-                  user._id === loggedInUser._id &&
-                  loggedInUser.isSeller
-              "
-              :class="{ selectedTab: activeTab === 'receivedOrders' }"
-              @click="openTab('receivedOrders')"
-            >
+            <button v-if="
+              loggedInUser &&
+              user._id === loggedInUser._id &&
+              loggedInUser.isSeller
+            " :class="{ selectedTab: activeTab === 'receivedOrders' }" @click="openTab('receivedOrders')">
               Received Orders
             </button>
-            <button
-              v-if="loggedInUser.isSeller"
-              :class="{ selectedTab: activeTab === 'reviewsTab' }"
-              @click="openTab('reviewsTab')"
-            >
+            <button v-if="loggedInUser.isSeller" :class="{ selectedTab: activeTab === 'reviewsTab' }"
+              @click="openTab('reviewsTab')">
               Reviews
             </button>
           </div>

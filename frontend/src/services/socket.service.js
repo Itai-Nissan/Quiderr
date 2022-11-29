@@ -1,7 +1,5 @@
 import io from 'socket.io-client'
 import { userService } from './user.service'
-import { orderService } from './order.service'
-import { orderStore } from '../store/modules/order-store'
 
 export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'
 export const SOCKET_EMIT_SEND_MSG = 'chat-send-msg'
@@ -12,20 +10,13 @@ export const SOCKET_EVENT_ORDER_ADDED = 'order-added'
 export const SOCKET_EVENT_ORDER_ABOUT_YOU = 'order-about-you'
 
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
-const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 const SOCKET_EMIT_UPDATE_ORDERS = 'update-orders'
-// const SOCKET_EMIT_DELETE_ORDER = 'delete-order'
 
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
 
 export const socketService = createSocketService()
-// export const socketService = createDummySocketService()
-
-// for debugging from console
-// window.socketService = socketService
 
 socketService.setup()
-
 
 function createSocketService() {
   var socket = null
@@ -36,8 +27,8 @@ function createSocketService() {
       const user = userService.getLoggedinUser()
       if (user) this.login(user._id)
 
-      socket.on('updateUserOrders', ((response) => {
-        const userId = user._id
+      socket.on('updateUserOrders', (() => {
+        // const userId = user._id
       }))
     },
     on(eventName, cb) {
@@ -58,9 +49,6 @@ function createSocketService() {
     login(userId) {
       socket.emit(SOCKET_EMIT_LOGIN, userId)
     },
-    // logout() {
-    //   socket.emit(SOCKET_EMIT_LOGOUT)
-    // },
     terminate() {
       socket = null
     },

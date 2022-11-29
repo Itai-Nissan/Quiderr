@@ -8,18 +8,19 @@
 
 <script>
 export default {
-    props: {
-        categorie: String,
-    },
-    computed: {
-        stylisedName(){
-            return this.categorie
-        }
-    },
-    methods: {
-        goToCategorie(){
-            this.$router.push(`/explore?search=${this.categorie}`)
-        }
+  name:'CategoryBtn',
+  props: {
+    categorie: String,
+  },
+  computed: {
+    stylisedName() {
+      return this.categorie
     }
+  },
+  methods: {
+    goToCategorie() {
+      this.$router.push(`/explore?search=${this.categorie}`)
+    }
+  }
 }
 </script>

@@ -24,6 +24,7 @@
 
 <script>
 export default {
+  name:'HeaderInput',
   data() {
     return {
       searchInput: null,

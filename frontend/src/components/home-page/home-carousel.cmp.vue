@@ -42,7 +42,6 @@
 <script>
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
-import { utilService } from '../../services/util-service'
 export default {
   components: { VueperSlides, VueperSlide },
   data() {

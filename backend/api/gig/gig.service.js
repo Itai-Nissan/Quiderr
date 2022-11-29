@@ -12,7 +12,6 @@ async function query(filterBy) {
   .sort(order)
   .toArray()
 
-  // console.log('printing gigs:',gigs);
   return gigs
 }
 

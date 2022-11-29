@@ -1,19 +1,9 @@
 <template>
   <section class="my-orders">
-    <div
-      v-for="receivedOrder in receivedOrders"
-      :key="receivedOrder"
-      class="order-item"
-    >
-      <div
-        v-if="receivedOrder"
-        class="order-main-info"
-      >
+    <div v-for="receivedOrder in receivedOrders" :key="receivedOrder" class="order-item">
+      <div v-if="receivedOrder" class="order-main-info">
         <div class="buyer-name-and-img">
-          <img
-            :src="receivedOrder.buyer.imgUrl"
-            alt=""
-          >
+          <img :src="receivedOrder.buyer.imgUrl" alt="">
           <h3>{{ receivedOrder.buyer.fullname }}</h3>
         </div>
         <div class="order-price">
@@ -26,14 +16,8 @@
           Status: {{ receivedOrder.status }}
         </div>
       </div>
-      <div
-        v-if="receivedOrder"
-        class="order-image"
-      >
-        <img
-          :src="receivedOrder.gig.imgUrl[0]"
-          alt=""
-        >
+      <div v-if="receivedOrder" class="order-image">
+        <img :src="receivedOrder.gig.imgUrl[0]" alt="">
         <el-dropdown>
           <span class="el-dropdown-link">
             <el-icon class="el-icon--right">
@@ -58,8 +42,7 @@
 
 <script>
 import { socketService } from '../../services/socket.service'
-import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
-
+import { showSuccessMsg } from '../../services/event-bus.service'
 export default {
   name: 'ReceivedOrders',
   data() {
@@ -79,10 +62,10 @@ export default {
       await this.$store.dispatch({ type: 'setOrderStatus', order: order, response: response })
       this.userReceivedOrders()
       socketService.onSetOrderStatus("update-order", response)
-      if(response === 'approved') showSuccessMsg('Order approved!')
-      if(response === 'decline') showSuccessMsg('Order declined')
+      if (response === 'approved') showSuccessMsg('Order approved!')
+      if (response === 'decline') showSuccessMsg('Order declined')
     },
-    async userReceivedOrders(response) {
+    async userReceivedOrders() {
       const userId = this.$route.params.id
       this.receivedOrders = await this.$store.dispatch({
         type: 'loadOrders',

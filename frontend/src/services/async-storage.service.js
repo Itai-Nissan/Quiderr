@@ -8,7 +8,7 @@ export const storageService = {
   
 }
 
-function query(entityType, delay = 1000) {
+function query(entityType) {
   var entities = JSON.parse(localStorage.getItem(entityType)) || []
   return new Promise((resolve) => {
       resolve(entities)
@@ -64,9 +64,4 @@ function _makeId(length = 5) {
 
 function saveToStorage(key, val) {
   localStorage.setItem(key, JSON.stringify(val));
-}
-
-function loadFromStorage(key) {
-  var val = localStorage.getItem(key);
-  return JSON.parse(val);
 }

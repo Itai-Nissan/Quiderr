@@ -11,29 +11,28 @@ export const orderService = {
     updateOrder,
 }
 
-const allTags = [
-    'logo-design',
-    'wordpress',
-    'voice-over',
-    'artisitic',
-    'proffesional',
-    'accessible',
-]
-
+// const allTags = [
+//     'logo-design',
+//     'wordpress',
+//     'voice-over',
+//     'artisitic',
+//     'proffesional',
+//     'accessible',
+// ]
 
 async function query(filterBy) {
     const orders = await httpService.get(ENDPOINT, filterBy)
-    const sortedAsc = orders.sort(
-        (objA, objB) => Number(objA.createdAt) - Number(objB.createdAt),
-    )
-    const sortedDesc = orders.sort(
-        (objA, objB) => Number(objB.createdAt) - Number(objA.createdAt),
-    )
+    // const sortedAsc = orders.sort(
+    //     (objA, objB) => Number(objA.createdAt) - Number(objB.createdAt),
+    // )
+    // const sortedDesc = orders.sort(
+    //     (objA, objB) => Number(objB.createdAt) - Number(objA.createdAt),
+    // )
     return orders
 }
 
-async function getOrders(filterBy) {
-    return Promise.resolve(orderData)
+async function getOrders() {
+    return Promise.resolve()
 }
 
 async function getById(id) {
@@ -90,7 +89,7 @@ var datetime = currentdate.getDay() + "/" + currentdate.getMonth()
     + currentdate.getMinutes() + ":" + currentdate.getSeconds();
 
 
-function isPrimaryTag(tag) {
-    return allTags.slice(0, 3).includes(tag)
-}
+// function isPrimaryTag(tag) {
+//     return allTags.slice(0, 3).includes(tag)
+// }
 
