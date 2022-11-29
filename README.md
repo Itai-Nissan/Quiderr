@@ -13,9 +13,9 @@ As well as libries such as [Element-plus](https://element-plus.org/en-US/), [cry
 ## Running
 
 ### Frontend
-First, go to frontend dir 'cd frontend'.
+First, go to frontend dir `cd frontend`.
 Then, make sure to first run `npm install`, and then `npm run dev`.
 
 ### Backend
-First, go to backend dir 'cd backend'.
+First, go to backend dir `cd backend`.
 Then, make sure to first run `npm install`, and then run `npm run start`.
