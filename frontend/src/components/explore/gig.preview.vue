@@ -10,7 +10,8 @@
             <img src="../../assets/imgs/prev.png">
           </template>
 
-          <vueper-slide v-for="(img, i) in gig.imgUrl" :key="i" class="card-vuper-explore" :image="img"
+          <vueper-slide
+v-for="(img, i) in gig.imgUrl" :key="i" class="card-vuper-explore" :image="img"
             @click="onMoveToDetails" />
         </vueper-slides>
 
@@ -36,7 +37,8 @@
           </div>
           <div class="price-like-wrapper">
             <div class="price-like-container">
-              <div :class="{
+              <div
+:class="{
                 'liked-heart': isLiked,
                 'gray-heart': !isLiked,
               }">

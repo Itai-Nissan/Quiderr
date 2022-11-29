@@ -25,7 +25,8 @@
               </div>
             </div>
             <div v-if="userModalOpen" class="dropdown-user-menu">
-              <router-link v-if="user" class="profile-link" :to="`/user-profile/${user._id}`"
+              <router-link
+v-if="user" class="profile-link" :to="`/user-profile/${user._id}`"
                 @click="userModalOpen = false">
                 Profile
               </router-link>
