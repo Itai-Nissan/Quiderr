@@ -50,6 +50,9 @@ async function getById(userId) {
     throw err
   }
 }
+
+var hi = 'hi'
+
 async function getByUsername(username) {
   try {
     const collection = await dbService.getCollection('user')

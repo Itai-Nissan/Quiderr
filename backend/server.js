@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const path = require('path')
-const cookieParser = require('cookie-parser')
+// const cookieParser = require('cookie-parser')
 const expressSession = require('express-session')
 
 const app = express()
