@@ -1,0 +1,27 @@
+// COLORS
+$green: #1dbf73;
+$success: #9dffd388;
+$alert: #ffbcb691;
+$nav: #7b7e86;
+$logo: #404145;
+$txt1: #62646a;
+$txt2: #95979d;
+$border: #dadbdd;
+$separator: #c5c6c9;
+$stars: #ffb33e;
+$white: #fff;
+$btn-hover: #1da164;
+$rate-bar: #e4e5e7;
+$rate-txt: #4481ed;
+
+// LAYOUT
+$layoutPadding: 24px;
+
+// LAYOUT BREAKPOINTS
+$break-narrow: 600px;
+$break-normal: 900px;
+$break-wide: 1160px;
+
+$padded-break-narrow: $break-narrow + $layoutPadding * 2;
+$padded-break-normal: $break-normal + $layoutPadding * 2;
+$padded-break-wide: $break-wide + $layoutPadding * 2;

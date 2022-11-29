@@ -1,0 +1,46 @@
+//SETUP:
+@import 'setup/nullifier';
+@import 'setup/typography';
+@import 'setup/variables';
+// @import 'basic/base';
+@import 'setup/mixins';
+@import 'basic/layout';
+
+//COMPONENTS:
+// @import 'components/main-layout';
+@import 'components/header';
+@import 'components/footer';
+@import 'components/dropdown';
+
+//gig-details:
+@import 'components/gig-details-styles/_gig-details-header.scss';
+@import 'components/gig-details-styles/_gig-details-about-gig.scss';
+@import 'components/gig-details-styles/_gig-details-about-seller.scss';
+@import 'components/gig-details-styles/_gig-details-purchase.scss';
+@import 'components/gig-details-styles/_gig-details-owner.scss';
+@import 'components/gig-details-styles/_gig-details-review.scss';
+
+// gig-order:
+@import 'components/gig-order-styles/_gig-order-page.scss';
+
+//COMPONENTS:home:
+@import 'components/home-page-styles/body.scss';
+@import 'components/home-page-styles/about.scss';
+@import 'components/home-page-styles/categories-list.scss';
+@import 'components/home-page-styles/hero.scss';
+@import 'components/home-page-styles/trusted-by.scss';
+
+//explore:
+@import 'components/gig-explore-styles/explor.scss';
+@import 'components/gig-explore-styles/explore-filter';
+@import 'components/gig-explore-styles/explore-list.scss';
+@import 'components/gig-explore-styles/explore-preview.scss';
+@import 'components/gig-details-styles/gig-details-main';
+
+//join and sign in:
+@import 'components/join-and-signin/join';
+//user-profile:
+@import 'components/user-profile/user-profile';
+
+//user-msg
+@import "components/user-msg";
